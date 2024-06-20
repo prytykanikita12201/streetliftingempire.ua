@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рекорди - Стритліфтинг</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <i class="fas fa-dumbbell"></i>
+        StreetLiftingHub
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item has-submenu">
+          <a class="nav-link">Нормативи</a>
+          <ul class="submenu">
+            <li><a href="pull-dip.html">Двоборство</a></li>
+            <li><a href="pulls.html">Підтягування</a></li>
+            <li><a href="dips.html">Віджимання на брусах</a></li>
+            <li><a href="other.html">Додаткові категорії</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="records.html" class="nav-link">Рекорди</a></li>
+        <li class="nav-item"><a href="training-plans.html" class="nav-link">План тренувань</a></li>
+        <li class="nav-item"><a href="calendar.html" class="nav-link">Календар змагань</a></li>
+        <li class="nav-item"><a href="calculator.html" class="nav-link">Калькулятор</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
+  
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Календар змагань</h1>
+      <p>Тут ви зможете побачити змагання, які проходили та результати.</p>
+  </section>
+  <div class="event-card">
+    <div class="event-details">
+      <h3>Чемпіонат світу зі стрітліфтингу</h3>
+      <p>Дата: 24.07.2021</p>
+      <p>Місце: Київ, Україна</p>
+      <a href="#" onclick="showTable('world-table'); return false;" class="btn">Чемпіонат світу зі стрітліфтингу</a>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5080.564798013931!2d30.52739067692203!3d50.45446578707409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce4ef9be01b7%3A0xcd7dcf2eba57eba2!2z0JDRgNC60LAg0KHQstC-0LHQvtC00Lgg0YPQutGA0LDRl9C90YHRjNC60L7Qs9C-INC90LDRgNC-0LTRgw!5e0!3m2!1suk!2sde!4v1718838607736!5m2!1suk!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="event-details">
+      <h3>Чемпіонат України зі стрітліфтингу</h3>
+      <p>Дата: 12.05.2024</p>
+      <p>Місце: Дніпро, Україна</p>
+      <a href="#" onclick="showTable('ukraine-table')" class="btn">Чемпіонат України зі стрітліфтингу</a>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d660.7090728381629!2d35.079495269679555!3d48.51720288654681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d9585f5ef41785%3A0xf8996fb437d3ba89!2z0KTRltGC0L3QtdGBLdC60LvRg9CxIEYz!5e0!3m2!1suk!2sde!4v1718838769587!5m2!1suk!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <div id="table-container"></div>
+
+  <footer>
+    <p>&copy; 2024 Стритліфтинг. Всі права захищені.</p>
+  </footer>
+    <script>
+    function showTable(tableId) {
+  var tableContainer = document.getElementById("table-container");
+  
+  // Перевірка, чи таблиця вже відображається
+  if (tableContainer.innerHTML.includes(tableId)) {
+    tableContainer.innerHTML = ""; // Очищення контейнера
+  } else {
+    // Очистити контейнер перед відображенням нової таблиці
+    tableContainer.innerHTML = "";
+// Очистити контейнер
+
+      if (tableId === "world-table") {
+        tableContainer.innerHTML = `
+          <table id="world-table">
+            <h2>Результати змагань</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Країна</th>
+                  <th>Ім'я спортсмена</th>
+                  <th>Вагова категорія</th>
+                  <th>Вага</th>
+                  <th>Підтягування</th>
+                  <th>Віджимання на брусах</th>
+                  <th>Загальний результат</th>
+                  <th>Місце</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Казахстан</td>
+                  <td>Набієв Дамір</td>
+                  <td>до 60 кг</td>
+                  <td>59.9</td>
+                  <td>70</td>
+                  <td>90</td>
+                  <td>160</td>
+                  <td>I</td>
+                </tr>
+        <tr>
+          <td>Казахстан</td>
+          <td>Акжол Сайлхаідін</td>
+          <td>до 60 кг</td>
+          <td>59.8</td>
+          <td>62.5</td>
+          <td>80</td>
+          <td>142.5</td>
+          <td>II</td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Новоченко Володимир</td>
+          <td>до 60 кг</td>
+          <td>59.3</td>
+          <td>-</td>
+          <td>82.5</td>
+          <td>82.5</td>
+          <td>III</td>
+        </tr>
+        <tr>
+          <td>Казахстан</td>
+          <td>Ільдар Ягаєв</td>
+          <td>до 70 кг</td>
+          <td>69.8</td>
+          <td>100</td>
+          <td>120</td>
+          <td>220</td>
+          <td>I</td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Кулініч Сергій</td>
+          <td>до 70 кг</td>
+          <td>68.5</td>
+          <td>80</td>
+          <td>127.5</td>
+          <td>207.5</td>
+          <td>II</td>
+        </tr>
+        <tr>
+          <td>Казахстан</td>
+          <td>Раміль Аблізов</td>
+          <td>до 70 кг</td>
+          <td>69.5</td>
+          <td>95</td>
+          <td>110</td>
+          <td>205</td>
+          <td>III</td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Ігнатенко Роман</td>
+          <td>до 70 кг</td>
+          <td>67.4</td>
+          <td>70</td>
+          <td>110</td>
+          <td>180</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Казахстан</td>
+          <td>Бахит Ісатаєвич</td>
+          <td>до 70 кг</td>
+          <td>68.8</td>
+          <td>75</td>
+          <td>85</td>
+          <td>160</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Жук Ярослав</td>
+          <td>до 70 кг</td>
+          <td>66</td>
+          <td>55</td>
+          <td>107.5</td>
+          <td>162.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Остапко Данііл</td>
+          <td>до 80 кг</td>
+          <td>79.1</td>
+          <td>105</td>
+          <td>132.5</td>
+          <td>237.5</td>
+          <td>I</td>
+        </tr>
+        <tr>
+          <td>Болгарія</td>
+          <td>Сімеон Міхайлов</td>
+          <td>до 80 кг</td>
+          <td>74.3</td>
+          <td>87.5</td>
+          <td>127.5</td>
+          <td>215</td>
+          <td>II</td>
+        </tr>
+        <tr>
+          <td>Франція</td>
+          <td>Шевілляр Оін</td>
+          <td>до 80 кг</td>
+          <td>73.4</td>
+          <td>92.5</td>
+          <td>120</td>
+          <td>212.5</td>
+          <td>III</td>
+        </tr>
+        <tr>
+          <td>Бельгія</td>
+          <td>Ілес Берсанов</td>
+          <td>до 80 кг</td>
+          <td>79.9</td>
+          <td>85</td>
+          <td>125</td>
+          <td>210</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Барбарук Олександр</td>
+          <td>до 80 кг</td>
+          <td>79.4</td>
+          <td>87.5</td>
+          <td>115</td>
+          <td>202.5</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Франція</td>
+          <td>Лі Франсуа</td>
+          <td>до 80 кг</td>
+          <td>74.1</td>
+          <td>85</td>
+          <td>115</td>
+          <td>200</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Єквадор</td>
+          <td>Рікардо Хосе Монтальво Корпас</td>
+          <td>до 80 кг</td>
+          <td>78.3</td>
+          <td>82.5</td>
+          <td>110</td>
+          <td>192.5</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Гончарук Юрій</td>
+          <td>до 80 кг</td>
+          <td>72.3</td>
+          <td>72.5</td>
+          <td>105</td>
+          <td>177.5</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Білорусь</td>
+          <td>Артюх Нікіта</td>
+          <td>до 80 кг</td>
+          <td>78.3</td>
+          <td>55</td>
+          <td>80</td>
+          <td>135</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Бопуслав Волянський</td>
+          <td>до 80 кг</td>
+          <td>76.2</td>
+          <td>-</td>
+          <td>110</td>
+          <td>110</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Лапін Олексій</td>
+          <td>до 90 кг</td>
+          <td>86.3</td>
+          <td>100</td>
+          <td>150</td>
+          <td>250</td>
+          <td>I</td>
+        </tr>
+        <tr>
+          <td>Франція</td>
+          <td>Олівє Нгессан</td>
+          <td>до 90 кг</td>
+          <td>88.0</td>
+          <td>95</td>
+          <td>150</td>
+          <td>245</td>
+          <td>II</td>
+        </tr>
+        <tr>
+          <td>Чилі</td>
+          <td>Естебан Андрес Меріно Кабрера</td>
+          <td>до 90 кг</td>
+          <td>83.3</td>
+          <td>70</td>
+          <td>105</td>
+          <td>175</td>
+          <td>III</td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Зелов Євгеній</td>
+          <td>до 90 кг</td>
+          <td>88.5</td>
+          <td>75</td>
+          <td>90</td>
+          <td>165</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Франція</td>
+          <td>Хертьо Ділан</td>
+          <td>до 100 кг</td>
+          <td>96.0</td>
+          <td>105</td>
+          <td>160</td>
+          <td>265</td>
+          <td>I</td>
+        </tr>
+        <tr>
+          <td>Білорусь</td>
+          <td>Новіков Миколай</td>
+          <td>до 100 кг</td>
+          <td>94.4</td>
+          <td>80</td>
+          <td>117.5</td>
+          <td>197.5</td>
+          <td>II</td>
+        </tr>
+        <tr>
+          <td>Казахстан</td>
+          <td>Валід Гаджубеков</td>
+          <td>до 100 кг</td>
+          <td>91.2</td>
+          <td>60</td>
+          <td>135</td>
+          <td>195</td>
+          <td>III</td>
+        </tr>
+        <tr>
+          <td>Україна</td>
+          <td>Комзюк Сергій</td>
+          <td>до 100 кг</td>
+          <td>92.6</td>
+          <td>65</td>
+          <td>120</td>
+          <td>185</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+        `;
+      } else if (tableId === "ukraine-table") {
+        tableContainer.innerHTML = `
+          <table id="ukraine-table">
+            <h2>Результати змагань</h2>
+  <thead>
+    <tr>
+            <th>Країна</th>
+            <th>Ім'я спортсмена</th>
+            <th>Вагова категорія</th>
+            <th>Вага</th>
+            <th>Підтягування</th>
+            <th>Віджимання на брусах</th>
+            <th>Загальний результат</th>
+            <th>Місце</th>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Семерик Анастасія</td>
+            <td>Дівчата, спільна вагова</td>
+            <td>58.15</td>
+            <td>30</td>
+            <td>50</td>
+            <td>80</td>
+            <td>I</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Камаєл Софія</td>
+            <td>Дівчата, спільна вагова</td>
+            <td>49.3</td>
+            <td>25</td>
+            <td>30</td>
+            <td>55</td>
+            <td>II</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Самойленко Нонна</td>
+            <td>Дівчата, спільна вагова</td>
+            <td>54.3</td>
+            <td>22.5</td>
+            <td>32.5</td>
+            <td>55</td>
+            <td>III</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Кравченко Валерія</td>
+            <td>Дівчата, спільна вагова</td>
+            <td>48.2</td>
+            <td>27.5</td>
+            <td>25</td>
+            <td>52.5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Іваницька Марія</td>
+            <td>Дівчата, спільна вагова</td>
+            <td>54.6</td>
+            <td>25</td>
+            <td>27.5</td>
+            <td>52.5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Марченко Олег</td>
+            <td>до60 кг</td>
+            <td>59.35</td>
+            <td>60</td>
+            <td>92.5</td>
+            <td>152.5</td>
+            <td>I</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Григоренко Владислав</td>
+            <td>до 60 кг</td>
+            <td>59.45</td>
+            <td>60</td>
+            <td>90</td>
+            <td>150</td>
+            <td>II</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Гайдук Максим</td>
+            <td>до 60 кг</td>
+            <td>59.55</td>
+            <td>62.5</td>
+            <td>85</td>
+            <td>147.5</td>
+            <td>III</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Петросян Роберт</td>
+            <td>до 60 кг</td>
+            <td>58.15</td>
+            <td>55</td>
+            <td>85</td>
+            <td>140</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Нечай Максим</td>
+            <td>до 60 кг</td>
+            <td>57.35</td>
+            <td>50</td>
+            <td>65</td>
+            <td>115</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Бондар Дмитро</td>
+            <td>до 70 кг</td>
+            <td>69.4</td>
+            <td>85</td>
+            <td>100</td>
+            <td>185</td>
+            <td>I</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Афанасьєв Андрій</td>
+            <td>до 70 кг</td>
+            <td>69.4</td>
+            <td>72.5</td>
+            <td>95</td>
+            <td>167.5</td>
+            <td>II</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Маргарян Арман</td>
+            <td>до 70 кг</td>
+            <td>69.6</td>
+            <td>72.5</td>
+            <td>90</td>
+            <td>162.5</td>
+            <td>III</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Демченко Дмитро</td>
+            <td>до 70 кг</td>
+            <td>69.6</td>
+            <td>67.5</td>
+            <td>95</td>
+            <td>162.5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Паньчишин Нікіта</td>
+            <td>до 70 кг</td>
+            <td>69.4</td>
+            <td>65</td>
+            <td>95</td>
+            <td>160</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Рибак Андрій</td>
+            <td>до 70 кг</td>
+            <td>64.8</td>
+            <td>75</td>
+            <td>80</td>
+            <td>155</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Шульгій Олег</td>
+            <td>до 70 кг</td>
+            <td>69.5</td>
+            <td>62.5</td>
+            <td>75</td>
+            <td>137,5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Кірнос Олександр</td>
+            <td>до 70 кг</td>
+            <td>69.3</td>
+            <td>72.5</td>
+            <td>-</td>
+            <td>72.5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Мужило Максим</td>
+            <td>до 70 кг</td>
+            <td>67.2</td>
+            <td>70</td>
+            <td>-</td>
+            <td>70</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Тарасов Арсен</td>
+            <td>до 80 кг</td>
+            <td>78,85</td>
+            <td>82.5</td>
+            <td>105</td>
+            <td>187.5</td>
+            <td>I</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Залеський Єгор</td>
+            <td>до 80 кг</td>
+            <td>78.65</td>
+            <td>65</td>
+            <td>95</td>
+            <td>160</td>
+            <td>II</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Кулик Костянтин</td>
+            <td>до 80 кг</td>
+            <td>72.3</td>
+            <td>60</td>
+            <td>97,5</td>
+            <td>157,5</td>
+            <td>III</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Карабка Дмитро</td>
+            <td>до 80 кг</td>
+            <td>77.7</td>
+            <td>55</td>
+            <td>90</td>
+            <td>145</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Босенко Никита</td>
+            <td>до 80 кг</td>
+            <td>70.1</td>
+            <td>72.5</td>
+            <td>-</td>
+            <td>72,5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Остапко Данило</td>
+            <td>до 90 кг</td>
+            <td>89.45</td>
+            <td>105</td>
+            <td>142.5</td>
+            <td>247.5</td>
+            <td>I</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Сідяков Дмитро</td>
+            <td>до 90 кг</td>
+            <td>87.1</td>
+            <td>62.5</td>
+            <td>105</td>
+            <td>167.5</td>
+            <td>II</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Прохоренко Анатолій</td>
+            <td>до 90 кг</td>
+            <td>91.2</td>
+            <td>72.5</td>
+            <td>90</td>
+            <td>162.5</td>
+            <td>III</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Бінобал Олександр</td>
+            <td>до 90 кг</td>
+            <td>87.6</td>
+            <td>65</td>
+            <td>95</td>
+            <td>160</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Ремізов Данило</td>
+            <td>до 90 кг</td>
+            <td>86.1</td>
+            <td>55</td>
+            <td>85</td>
+            <td>140</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Ковальов Владислав</td>
+            <td>90+ кг</td>
+            <td>90.65</td>
+            <td>85</td>
+            <td>132.5</td>
+            <td>217.5</td>
+            <td>I</td>
+        </tr>
+        <tr>
+            <td>Україна</td>
+            <td>Гриченко Денис</td>
+            <td>90+ кг</td>
+            <td>96.6</td>
+            <td>45</td>
+            <td>100</td>
+            <td>145</td>
+            <td>II</td>
+        </tr>
+  </tbody>
+</table> `;
+}
+  }
+}
+  </script>
+</body>
+</html>
